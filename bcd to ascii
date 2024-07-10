@@ -1,0 +1,25 @@
+.equ packedbcd=0x300
+ .equ ascii1=0x301
+ .equ ascii2=0x302
+ ; initialize stack
+ ldi r16,high(ramend)
+ out sph,r16
+ ldi r16,low(ramend)
+ out spl,r16
+ ldi r20,0x38
+ sts packedbcd,r20
+ call conversion
+ here:jmp here     
+
+ Conversion:
+    lds r20,packedbcd	
+		mov r21,r20
+		ldi r22,0x30
+    andi r20,0x0f		
+		add r20,r22		
+		sts ascii1,r20		
+		swap r21		
+		andi r21,0x0f		
+		add r21,r22		
+		sts ascii2,r21		
+		ret
