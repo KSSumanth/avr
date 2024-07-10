@@ -1,0 +1,33 @@
+.org 0
+ldi r16,10	
+ldi xl, 0X00	
+ldi xh, 0X06	
+ldi r20,0	
+ldi r21,0	
+
+ldi r17,2
+st x+,r17
+ldi r17,3
+st x+,r17
+ldi r17,4
+st x+,r17
+ldi r17,7
+st x+,r17
+ldi r17,10
+st x+,r17
+ldi r17,12
+st x+,r17
+
+
+ldi xl, 0X00	
+ldi xh, 0X06	
+
+l1: ld r18,x+
+    ror r18		
+    brcs l2		
+    inc r21		
+     rjmp next
+l2: inc r20		
+next: dec r16
+      brne l1
+here: rjmp here 
