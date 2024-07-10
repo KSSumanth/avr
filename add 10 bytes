@@ -1,0 +1,51 @@
+.include "m32def.inc"
+ .org 0
+ldi r16,10
+sts 0x0300,r16
+ldi r16,20
+sts 0x0301,r16
+ldi r16,30
+sts 0x0302,r16
+ldi r16,40
+sts 0x0303,r16
+ldi r16,50
+sts 0x0304,r16
+ldi r16,60
+sts 0x0305,r16
+ldi r16,70
+sts 0x0306,r16
+ldi r16,80
+sts 0x0307,r16
+ldi r16,90
+sts 0x0308,r16
+ldi r16,100
+sts 0x0309,r16
+
+ldi r21,0
+ldi r22,0
+lds r20,0x0300
+add r21,r20
+lds r20,0x0301
+add r21,r20
+lds r20,0x0302
+add r21,r20
+lds r20,0x0303
+add r21,r20
+lds r20,0x304
+add r21,r20
+lds r20,0x0305
+add r21,r20
+lds r20,0x0306
+add r21,r20
+lds r20,0x0307
+add r21,r20
+lds r20,0x0308
+add r21,r20
+lds r20,0x0309
+add r21,r20
+
+in r19,sreg
+lsr r19		
+brcc here
+ldi r22,1	
+here: rjmp here
